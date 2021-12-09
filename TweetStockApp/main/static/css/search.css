@@ -1,0 +1,44 @@
+html {
+    height: 100%;
+}
+
+.container-fluid {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    background: url("../images/graph.png");
+    background-size: cover;
+    background-position: center center;
+    padding: 15px;
+}
+
+.container-fluid .card{
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 10%;
+    width: 500px;
+    height: 600px;
+    box-shadow: 0 10px 10px 0 rgba(22, 22, 26, 0.18);
+}
+
+.container-fluid .card legend {
+    font-size: 50px;
+    font-weight: 900;
+    color: #000;
+    margin: 60px 0 100px 40px;
+    width: 400px;
+}
+
+.container-fluid .autocomplete-input{
+    font-size: 20px;
+    width: 400px;
+    height: 60px;
+}
+
+#autocomplete {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 10%;
+}

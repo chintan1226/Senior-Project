@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}" type="text/css">
+{% endblock %}
+
+{% block title %}
+Search
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="card text-center">
+        <div class="card-body">
+            <!--
+            <div class="twitter-icon">
+                <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_hdy0htc2.json"
+                    background="transparent" speed="1" style="width: 250px; height: 250px;" loop autoplay>
+                </lottie-player>
+            </div>
+            -->
+            <form method="post" action=".">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Tweet Sentiment Analysis</legend>
+                    <div class="search-form">
+                        <div class="input-field">
+                            <link rel="stylesheet"
+                                href="https://unpkg.com/@trevoreyre/autocomplete-js/dist/style.css" />
+                            <div id="autocomplete" class="autocomplete">
+                                <input class="autocomplete-input" placeholder="Search..." aria-label="Search...">
+                                <ul class="autocomplete-result-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    new Autocomplete('#autocomplete', {
+        search: input => {
+            const url = `/search_name/?name=${input}`
+            return new Promise(resolve => {
+                fetch(url).then(response => response.json()).then(data => {
+                    resolve(data.data)
+                })
+            })
+        },
+        onSubmit: result => {
+            if (result) {
+                window.open(`/analysis/${result}`)
+            }
+            else {
+                alert("Error: Select user from list.")
+            }
+        }
+    })
+</script>
+{% endblock %}
