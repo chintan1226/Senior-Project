@@ -11,36 +11,42 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="top-row">
+    <div class="search-row">
         <div class="row justify-content-md-center">
             <div class="search-form">
-                <link rel="stylesheet" href="https://unpkg.com/@trevoreyre/autocomplete-js/dist/style.css" />
                 <div id="autocomplete" class="autocomplete">
-                    <input class="autocomplete-input" placeholder="Search..." aria-label="Search..." name="name">
+                    <input class="autocomplete-input" placeholder="Search for CEO" aria-label="Search for CEO"
+                        name="name">
                     <ul class="autocomplete-result-list"></ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bottom-row">
+
+    <div class="content-row">
         <div class="row">
-            <div class="col-sm-8">
-                <div class="executive-card">
+            <div class="col-sm-6">
+                <div class="executive-form">
                     <div class="card">
-                        <div class="card-body">
-                            <legend>
-                                {{ executive.name }}
-                            </legend>
+                        <div class="card-item">
+                            <div class="card-content">
+                                <span class="card-sub">{{executive.company}}</span>
+                                <div class="card-title">{{executive.name}}</div>
+                                <div class="card-text">
+                                    <strong>Username: </strong>@{{executive.username}}<br>
+                                    <strong>Description: </strong>{{executive.description}}<br>
+                                    <strong>Following: </strong>{{executive.following}}<br>
+                                    <strong>Followers: </strong>{{executive.followers}}<br>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="graph-form">
                     <div class="card">
-                        <div class="card-header">
-                            <strong>Company Stock:</strong>
-                            {{ executive.company }}
-                        </div>
-                        <div class="card-body">
+                        <span class="card-sub">Company Stock</span>
+                        <div class="card-title">{{executive.company}}</div>
+                        <div class="card-text">
                             {% autoescape off %}
                             {{ stock_graph }}
                             {% endautoescape %}
@@ -48,62 +54,65 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="accordian-form">
                     <div class="card">
-                        <div class="card-header">
-                            <strong>Vader Analysis:</strong>
-                            {{ executive.username }}
-                        </div>
-                        <div class="card-body">
-                            <table id="table" data-search="true" data-pagination="true" data-pagination-loop="false"
-                                data-pagination-parts="['pageInfo', 'pageList']" data-show-custom-view="true"
-                                data-custom-view="customViewFormatter" , data-maintain-meta-data="true">
-                                <thead>
-                                    <tr>
-                                        <th data-field="Date"></th>
-                                        <th data-field="Tweet"></th>
-                                        <th data-field="Likes"></th>
-                                        <th data-field="Retweets"></th>
-                                        <th data-field="Analysis"></th>
-                                        <th data-field="Polarity"></th>
-                                    </tr>
-                                </thead>
-                            </table>
+                        <span class="card-sub">Vader Analysis</span>
+                        <div class="card-title">{{ executive.name }}'s Tweets</div>
+                        <div class="card-text">
+                            <div class="card-body">
+                                <table id="table" data-search="true" data-search-align="left" data-pagination="true"
+                                    data-pagination-loop="false" data-pagination-parts="['pageInfo', 'pageList']"
+                                    data-show-custom-view="true" data-custom-view="customViewFormatter"
+                                    data-maintain-meta-data="true">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="Date"></th>
+                                            <th data-field="Tweet"></th>
+                                            <th data-field="Likes"></th>
+                                            <th data-field="Retweets"></th>
+                                            <th data-field="Analysis"></th>
+                                            <th data-field="Polarity"></th>
+                                        </tr>
+                                    </thead>
+                                </table>
 
-                            <template id="accordionTemplate">
-                                <div class="accordion-form">
-                                    <div class="accordion" id="accordionExtension">
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapse-%Index%"
-                                                    aria-expanded="false" aria-controls="collapse-%Index%">
-                                                    %Date%
-                                                </button>
-                                            </h2>
-                                            <div id="collapse-%Index%" class="accordion-collapse collapse"
-                                                aria-labelledby="heading-%Index%" data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <p><strong>Tweet:</strong> %Tweet%</p>
-                                                    <p><strong>Likes:</strong> %Likes%</p>
-                                                    <p><strong>Retweets:</strong> %Retweets%</p>
-                                                    <p><strong>Analysis:</strong> %Analysis%</p>
-                                                    <p><strong>Polarity:</strong> %Polarity%</p>
-                                                    <form method="post" action=".">
-                                                        {% csrf_token %}
-                                                        <button type="submit" class="btn btn-primary"
-                                                            name="dateSelected" value="date">
-                                                            View Stock
-                                                        </button>
-                                                    </form>
+                                <template id="accordionTemplate">
+                                    <div class="accordion-form">
+                                        <div class="accordion" id="accordionExtension">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse-%Index%"
+                                                        aria-expanded="false" aria-controls="collapse-%Index%">
+                                                        %Date%
+                                                    </button>
+                                                </h2>
+                                                <div id="collapse-%Index%" class="accordion-collapse collapse"
+                                                    aria-labelledby="heading-%Index%"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <p><strong>Tweet:</strong> %Tweet%</p>
+                                                        <p><strong>Likes:</strong> %Likes%</p>
+                                                        <p><strong>Retweets:</strong> %Retweets%</p>
+                                                        <p><strong>Analysis:</strong> %Analysis%</p>
+                                                        <p><strong>Polarity:</strong> %Polarity%</p>
+                                                        <form method="post" action=".">
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn btn-primary"
+                                                                name="dateSelected" value="date">
+                                                                View Stock
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </template>
+                                </template>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 html {
     height: 100%;
 }
@@ -7,7 +8,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Fira Sans', sans-serif;
     background: url("../images/graph.png");
     background-size: cover;
     background-position: center center;
@@ -37,8 +38,14 @@ html {
     height: 60px;
 }
 
-#autocomplete {
+.autocomplete-input{
+    background-color:#FFF;
+    border-radius:10px;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  }
+  
+  #autocomplete {
     max-width: 400px;
     margin: 0 auto;
     border-radius: 10%;
-}
+  }

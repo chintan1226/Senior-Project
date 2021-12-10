@@ -1,0 +1,59 @@
+html {
+    height: 100%;
+}
+
+body{
+    background-color: #F4F7FD;
+}
+
+.container-fluid{
+    font-family: 'Fira Sans', sans-serif;
+    padding: 20px;
+}
+
+.container-fluid legend{
+    font-weight: 900;
+    font-size: 50px;
+    color:#000;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.container-fluid .top-row{
+    margin-bottom: 20px;
+}
+
+.container-fluid .executive-card{
+    margin-bottom: 20px;
+}
+
+.container-fluid .card {
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 0 rgba(22, 22, 26, 0.18);
+}
+
+.container-fluid .card-header{
+    font-size: 24px;
+    border: 0;
+}
+
+.container-fluid .bottom-row .card-body{
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.container-fluid .accordian-form .card-body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.container-fluid .top_row .autocomplete-input{
+    font-size: 20px;
+    width: 50%;
+    height: 50px;
+}
+
+#autocomplete {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 10%;
+}

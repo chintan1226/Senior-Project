@@ -70,8 +70,7 @@ def anaylsis(response, name):
 
 def generate_user_data(executive):
 
-    twitter_data = TwitterAPI.Twitter().generate_twitter_data(
-        executive.username)
+    twitter_data = TwitterAPI.Twitter().generate_twitter_data(executive)
     print("Data Collected")
     anaylsis_df = SentimentAnalysis.Analysis().generate_analysis(twitter_data)
     print("Analysis Collected")
