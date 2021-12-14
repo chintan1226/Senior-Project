@@ -29,7 +29,7 @@ def test(response):
     print("Date: " + str(date))
     content['stock_graph'] = generate_graph(executive, date)
 
-    return render(response, 'main/new_analysis.html', content)
+    return render(response, 'main/old_analysis.html', content)
 
 
 def search_name(request):
