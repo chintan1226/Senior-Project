@@ -14,24 +14,6 @@ def error_404(request, exception):
     return render(request, 'main/error_404.html')
 
 
-def test(response):
-    date = datetime.today().strftime('%Y-%m-%d')
-    executive = Executive.objects.get(id=2)
-    content = generate_user_data(executive)
-    if response.method == "POST":
-        if response.POST.get("dateSelected"):
-            date_selected = response.POST.get("dateSelected")
-            date_selected = datetime.strptime(date_selected, '%B %d, %Y')
-            print("Selected Date: " + str(date_selected))
-            if date_selected.weekday:
-                print("Weekday!")
-                date = date_selected
-    print("Date: " + str(date))
-    content['stock_graph'] = generate_graph(executive, date)
-
-    return render(response, 'main/old_analysis.html', content)
-
-
 def search_name(request):
     name = request.GET.get('name')
     data = []
