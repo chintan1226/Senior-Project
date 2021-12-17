@@ -1,5 +1,8 @@
 # Tweet Sentiment Analysis Guide
 
+Web application that collects Twitter data on specific CEO’s and performs sentiment analysis. In addition, the application display’s the stock value of their company. 
+
+
 ## Setup
 
 The first thing to do is to clone the repository:
@@ -12,19 +15,22 @@ $ cd Senior-Project
 Create a virtual environment to install dependencies in and activate it:
 
 ```
-$ virtualenv2 --no-site-packages env
+$ virtualenv --no-site-packages env
 $ source env/bin/activate
 ```
+Souce: https://docs.python.org/3/library/venv.html
 
 Then install the dependencies:
 
-```sh
+```
 (env)$ pip install -r requirements.txt
 ```
 
 Once `pip` has finished downloading the dependencies:
-```sh
+```
 (env)$ cd TweetStockApp
+(env)$ python manage.py makemigrations
+(env)$ python manage.py migrate
 (env)$ python manage.py runserver
 ```
 And navigate to `http://localhost:8000`.
